@@ -2,14 +2,16 @@
 <html>
 <head>
     <title>Hello there!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="UTF-8"/>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<form action="index.php" method="post">
+<form action="create_user.php" method="post">
     <p>
-        Name:
-        <input type="text" name="name">
+        <label > Name:
+            <input type="text" name="name">
+        </label>
     </p>
     <p>
         Surname:
@@ -33,7 +35,6 @@
 </form>
 
 <?php
-
 if (!empty($_REQUEST['act'])) {
     $servername = "localhost";
     $username = "root";
@@ -44,7 +45,7 @@ if (!empty($_REQUEST['act'])) {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    $sql = "INSERT INTO user (name, surname, patronymic, deseases, ways_for_help)
+    $sql = "INSERT INTO user (name, surname, patronymic, diseases, ways_for_help)
       VALUES ('{$_REQUEST['name']}', '{$_REQUEST['surname']}', '{$_REQUEST['patronymic']}', '{$_REQUEST['diseases']}', '{$_REQUEST['ways_for_help']}')";
     if ($conn->query($sql) === TRUE) {
         echo "New record successfully added";
@@ -53,13 +54,6 @@ if (!empty($_REQUEST['act'])) {
     }
     $conn->close();
 }
-
-/**
- * Created by PhpStorm.
- * User: Verrigo
- * Date: 28.09.2018
- * Time: 14:46
- */
 ?>
 </body>
 </html>
