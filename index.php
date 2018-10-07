@@ -5,34 +5,48 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="UTF-8"/>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-<form action="create_user.php" method="post">
+    <div class="wrapper">
+        <div class="header"></div>
+        <div class="content">
+        <form action="create_user.php" method="post">
     <p>
-        <label > Name:
+        <label> Name:<br />
             <input type="text" name="name">
         </label>
     </p>
     <p>
-        Surname:
+    <label>Surname:<br />
         <input type="text" name="surname">
+        </label>
     </p>
     <p>
-        Patronymic:
+    <label>Patronymic:<br />
         <input type="text" name="patronymic">
+        </label>
     </p>
     <p>
-        Diseases:
+    <label>Diseases:<br />
         <textarea name="diseases" rows="6"></textarea>
+        </label>
     </p>
     <p>
-        How to help:
+    <label>How to help:<br />
         <textarea name="ways_for_help" rows="6"></textarea>
+        </label>
     </p>
 
     <input type="hidden" name="act" value="run">
     <input type="submit" value="Записать">
 </form>
+        </div>
+        <div class="footer"></div>
+    </div>    
+
+
 
 <?php
 if (!empty($_REQUEST['act'])) {

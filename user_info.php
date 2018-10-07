@@ -17,6 +17,11 @@
 include 'db.php'
 ?>
 <div class="container">
+    <form action="user_info.php" method="get">
+        Введите id:
+        <input type="number" name="id">
+        <input type="submit">
+    </form>
     <div class="row">
         <div class="col-sm">
             id
@@ -44,32 +49,82 @@ include 'db.php'
             <?php echo getPatronymic() ?>
         </div>
         <div class="w-100"></div>
+        <div class="col-sm">
+            Заболевания
+        </div>
+        <div class="col-sm">
+            Способы оказания помощи
+        </div>
+        <div class="w-100"></div>
+        <div class="col-sm">
+            <?php echo getDiseases() ?>
+        </div>
+        <div class="col-sm">
+            <?php echo getWays() ?>
+        </div>
+        <div class="w-100"></div>
     </div>
 </div>
 
 <?php
 function getName()
 {
-    $user = getUser($_GET['id'])->user_data;
-    return $user['name'];
+    if (!empty($_GET['id'])){
+        $user = getUser($_GET['id'])->user_data;
+        return $user['name'];
+    } else {
+        return '';
+    }
 }
 
 function getSurname()
 {
-    $user = getUser($_GET['id'])->user_data;
-    return $user['surname'];
+    if (!empty($_GET['id'])){
+        $user = getUser($_GET['id'])->user_data;
+        return $user['surname'];
+    } else {
+        return '';
+    }
 }
 
 function getPatronymic()
 {
-    $user = getUser($_GET['id'])->user_data;
-    return $user['patronymic'];
+    if (!empty($_GET['id'])){
+        $user = getUser($_GET['id'])->user_data;
+        return $user['patronymic'];
+    } else {
+        return '';
+    }
 }
 
 function getId()
 {
-    $user = getUser($_GET['id'])->user_data;
-    return $user['id'];
+    if (!empty($_GET['id'])){
+        $user = getUser($_GET['id'])->user_data;
+        return $user['id'];
+    } else {
+        return '';
+    }
+}
+
+function getDiseases()
+{
+    if (!empty($_GET['id'])){
+        $user = getUser($_GET['id'])->user_data;
+        return $user['diseases'];
+    } else {
+        return '';
+    }
+}
+
+function getWays()
+{
+    if (!empty($_GET['id'])){
+        $user = getUser($_GET['id'])->user_data;
+        return $user['ways_for_help'];
+    } else {
+        return '';
+    }
 }
 
 ?>
